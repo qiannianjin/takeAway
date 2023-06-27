@@ -1,0 +1,111 @@
+kind: Service
+# 相当于负载均衡层
+apiVersion: v1
+# 元数据
+metadata:
+  # 命名空间
+  namespace: test-rabbitmq
+  name: rabbitmq  #负载均衡器的名称
+  labels:
+    app: rabbitmq
+    type: LoadBalancer
+spec: #参数
+  type: NodePort #开端口
+  ports:
+    - name: http
+      protocol: TCP
+      port: 15672
+      targetPort: 15672
+      nodePort: 31672
+    - name: amqp
+      protocol: TCP
+      port: 5672 # 容器的端口映射
+      targetPort: 5672
+      nodePort: 30672 # 物理层端口映射
+  selector:
+    app: rabbitmq   #  负载均衡会找这几个容器,这几个容器下面会定义
+---
+apiVersion: v1
+# 用于注入配置文件
+kind: ConfigMap  # 编写一个文件，可以将这个文件挂载到每个容器里面，也就是注入rabbitmq内部，让他启用我们的
+metadata:
+  name: rabbitmq-config
+  namespace: test-rabbitmq
+data:
+  enabled_plugins: |
+      [rabbitmq_management,rabbitmq_peer_discovery_k8s].
+  rabbitmq.conf: |
+      cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s  
+      cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
+      cluster_formation.k8s.address_type = ip
+      cluster_formation.node_cleanup.interval = 30
+      cluster_formation.node_cleanup.only_log_warning =true
+      cluster_partition.handling = autoheal
+      loopback_users.guest =false
+# 第一条,配置那个插件使rabbitmq之间相互发现
+# 2设置地址，3是地址类型是ip，4是每30秒进行节点的清理（有节点掉线之类），5只记录warning日志，6网络分区修复（自动修复），7禁掉guest账户（false不禁掉）
+---
+apiVersion: apps/v1beta1
+#声明我们实际要工作的rabbitMq容器
+kind: StatefulSet  # 对一组k8s或一组容器pod的声明,k8s会自动给我们创建容器
+metadata:
+  name: rabbitmq
+  namespace: test-rabbitmq
+spec:
+  serviceName: rabbitmq
+  replicas: 3   # 需要几个节点
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      serviceAccountName: rabbitmq  # 相当与容器里面的账户意思
+      terminationGracePeriodSeconds: 10 # 升级或者更新，给前容器预留的处理时间
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3-management
+        volumeMounts:
+          - name: config-volume   # 和configmap联系起来
+            mountPath: /etc/rabbitmq
+        ports:
+          - name: http
+            protocol: TCP
+            containerPort: 15672 # 将容器的端口暴漏出来
+          - name: amqp
+            protocol: TCP
+            containerPort: 5672   #将容器的端口暴漏出来
+        livenessProbe: # 探针，检测pod是否死活，直接重启
+          exec: # 探针执行的命令
+            command: [ "rabbitmqctl", "status" ]
+          initialDelaySeconds: 60 # 第一次会延迟60秒去探测
+          periodSeconds: 60 # 之后每60秒探测一次
+          timeoutSeconds: 10 # 超过10秒没恢复则重启节点
+        readinessProbe: # 准备就绪探针，判断这个节点是否准备好，如果好，则挂载到负载均衡，不好的话
+          exec: # 探针执行的命令
+            command: [ "rabbitmqctl", "status" ]
+          initialDelaySeconds: 20
+          periodSeconds: 60
+          timeoutSeconds: 10
+        imagePullPolicy: Always # 每次重启是否拉镜像
+        env:
+          - name: MY_POD_IP # 定义这个变量的取值来自下方
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: RABBITMQ_USE_LONGNAME  #长主机名
+            value: "true"
+          - name: RABBITMQ_NODENAME # 节点的名称取值
+            value: "rabbit@$(MY_POD_IP)"
+          - name: K8S_SERVICE_NAME    # 当前k8s的name
+            value: "rabbitmq"
+          - name: RABBITMQ_ERLANG_COOKIE
+            value: "yinghurabbit"
+      volumes: # 挂载的硬盘
+        - name: config-volume
+          configMap:
+            name: rabbitmq-config
+            items:
+            - key: rabbitmq.conf
+              path: rabbitmq.conf
+            - key: enabled_plugins
+              path: enabled_plugins

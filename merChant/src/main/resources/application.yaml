@@ -1,0 +1,89 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    #    url: jdbc:mysql://localhost:3306/sbvue?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://rm-bp16j0050w5209878no.mysql.rds.aliyuncs.com:3306/my_user?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: super_fruit
+    password: whz123whz!
+
+  #redis配置
+  redis:
+    host: 8.136.140.60
+    port: 6379
+    database: 0
+    password: 123456
+    lettuce:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+#消息队列配置
+    rabbitmq:
+      addresses: 175.178.228.190:5672
+      password: admin
+      username: admin
+
+  # 配置文件上传大小限制（minio文件上传）
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+minio:
+  #  endpoint: http://192.168.137.20:9000
+  endpoint: http://8.136.140.60:9000
+  accessKey: AKIAIOSFODNN7EXAMPLE
+  secretKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  bucketName: good
+
+
+
+
+#spring.autoconfigure:
+#  exclude:
+#    - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+#    - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+### 数据源配置
+#datasource:
+#  jdbc:
+#    url: jdbc:mysql://rm-bp16j0050w5209878no.mysql.rds.aliyuncs.com:3306/my_user?useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    driverName: com.mysql.jdbc.Driver
+#    username: super_fruit
+#    password: whz123whz!
+#
+#  ### 全局配置
+#  globalconfig:
+#    author: mybatis-plus
+#    outputDir: easy-mybatis-plus-generator/test/src/main/java
+#    entityName: %sPO
+#    mapperName: %sMapper
+#    xmlName: %sMapper
+#  spring:
+#      velocity:
+#        enabled: true
+#        resource-loader-path: classpath:/templates/
+#        suffix: .vm
+
+
+server:
+  port: 8081
+#  ssl:
+#    enabled: true
+#    key-store: classpath:myhttps.p12
+#    key-store-password: 123456
+#    key-store-type: PKCS12
+#    protocol: TLS
+#    key-alias: myhttps
+
+
+
+
+#10086100861382256893513822568935  api密钥
+#微信配置
+weChactPay:
+  merchantId: 1607650922
+  privateKeyPath: classpath:apiclient_key.pem
+  merchantSerialNumber: 466BD0E28EC5E7AC3B37028C81106B34AF5514DD
+  apiV3key: 10086100861382256893513822568935

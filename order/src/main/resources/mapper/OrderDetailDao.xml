@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.order.dao.OrderDetailDao">
+
+    <resultMap type="org.example.order.entity.OrderDetail" id="OrderDetailMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="accountId" column="account_id" jdbcType="VARCHAR"/>
+        <result property="productId" column="product_id" jdbcType="VARCHAR"/>
+        <result property="deliverymanId" column="deliveryman_id" jdbcType="VARCHAR"/>
+        <result property="settlementId" column="settlement_id" jdbcType="VARCHAR"/>
+        <result property="rewardId" column="reward_id" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="NUMERIC"/>
+        <result property="date" column="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into takeaway.order_detail(status, address, account_id, product_id, deliveryman_id, settlement_id,
+        reward_id, price, date)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.status}, #{entity.address}, #{entity.accountId}, #{entity.productId}, #{entity.deliverymanId},
+            #{entity.settlementId}, #{entity.rewardId}, #{entity.price}, #{entity.date})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into takeaway.order_detail(status, address, account_id, product_id, deliveryman_id, settlement_id,
+        reward_id, price, date)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.status}, #{entity.address}, #{entity.accountId}, #{entity.productId}, #{entity.deliverymanId},
+            #{entity.settlementId}, #{entity.rewardId}, #{entity.price}, #{entity.date})
+        </foreach>
+        on duplicate key update
+        status = values(status) , address = values(address) , account_id = values(account_id) , product_id =
+        values(product_id) , deliveryman_id = values(deliveryman_id) , settlement_id = values(settlement_id) , reward_id
+        = values(reward_id) , price = values(price) , date = values(date)
+    </insert>
+
+</mapper>
+

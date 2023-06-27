@@ -9,18 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>order</artifactId>
-
-
-    <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.example</groupId>-->
-<!--            <artifactId>yinghu</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
-
-    </dependencies>
+    <artifactId>yinghu</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
