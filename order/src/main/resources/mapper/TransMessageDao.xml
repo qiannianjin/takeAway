@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.test.dao.TransMessageDao">
+
+    <resultMap type="org.example.test.entity.TransMessage" id="TransMessageMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="service" column="service" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="exchange" column="exchange" jdbcType="VARCHAR"/>
+        <result property="routingKey" column="routing_key" jdbcType="VARCHAR"/>
+        <result property="queue" column="queue" jdbcType="VARCHAR"/>
+        <result property="sequence" column="sequence" jdbcType="INTEGER"/>
+        <result property="payload" column="payload" jdbcType="VARCHAR"/>
+        <result property="date" column="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into takeaway.trans_message(type, exchange, routing_key, queue, sequence, payload, date)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.type}, #{entity.exchange}, #{entity.routingKey}, #{entity.queue}, #{entity.sequence},
+            #{entity.payload}, #{entity.date})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into takeaway.trans_message(type, exchange, routing_key, queue, sequence, payload, date)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.type}, #{entity.exchange}, #{entity.routingKey}, #{entity.queue}, #{entity.sequence},
+            #{entity.payload}, #{entity.date})
+        </foreach>
+        on duplicate key update
+        type = values(type) , exchange = values(exchange) , routing_key = values(routing_key) , queue = values(queue) ,
+        sequence = values(sequence) , payload = values(payload) , date = values(date)
+    </insert>
+
+</mapper>
+

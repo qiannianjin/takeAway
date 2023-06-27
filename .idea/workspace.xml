@@ -4,59 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="133ebaa5-d74d-4044-a7e7-9ab98ba22971" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/easyCodeMybatisCodeHelperTableSetting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e508312c81960992b653c7ff222c65b260d0fe9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/e/3e508312c81960992b653c7ff222c65b260d0fe9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merChant/src/main/java/org/example/config/RabbitConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merChant/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merChant/src/main/resources/rebel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merChant/src/test/java/MerChantApplicationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/common/ApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/common/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/common/StatusCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/MoodyRabbitConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/RabbitConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/RabbitValue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/MyQueueListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/controller/OrderDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/dao/OrderDetailDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/entity/OrderDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/service/OrderDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/service/impl/OrderDetailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/resources/mapper/OrderDetailDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/resources/rabbitmq.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/resources/rebel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/test/java/OrderApplicationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/points/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/points/src/main/resources/rebel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/points/src/test/java/PointsApplicationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rider/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rider/src/main/resources/rebel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rider/src/test/java/RiderApplicationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settlement/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settlement/src/main/resources/rebel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settlement/src/test/java/SettleMentApplicationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yinghu/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yinghu/src/main/java/org/example/common/ApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yinghu/src/main/java/org/example/common/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yinghu/src/main/java/org/example/common/StatusCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="133ebaa5-d74d-4044-a7e7-9ab98ba22971" name="Changes" comment="rabbitmq集成">
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b87057dd07f06d65137cf55227d16b731ce38887" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef09b8caa2d070bebc055d19b50001768293c10c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/3/f3982aa7bbd7cd62edf21aab4fba8d224c55c37e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/8/b87057dd07f06d65137cf55227d16b731ce38887" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/f/ef09b8caa2d070bebc055d19b50001768293c10c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/3/f3982aa7bbd7cd62edf21aab4fba8d224c55c37e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/common/TransMessageType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/po/TransMessagePo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/ResendTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/TransMessageSender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/controller/TransMessageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/dao/TransMessageDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/entity/TransMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/service/TransMessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/service/impl/TransMessageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/resources/mapper/TransMessageDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easyCodeMybatisCodeHelperTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeMybatisCodeHelperTableSetting.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/merChant/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/merChant/src/main/java/org/example/MerChantApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/OrderApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/points/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/points/src/main/java/org/example/PointsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rider/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/rider/src/main/java/org/example/RiderApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settlement/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/settlement/src/main/java/org/example/SettleMentApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/config/MoodyRabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/MoodyRabbitConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/controller/MyQueueListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/MyQueueListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -101,48 +76,55 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaVariableFindUsagesOptions.isSearchForAccessors&quot;: &quot;true&quot;,
-    &quot;JavaVariableFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;K:/后端项目/takeAway/order/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.ignored.files&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;32af3525bf8e6a79c7621edbb6b8785c&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaVariableFindUsagesOptions.isSearchForAccessors": "true",
+    "JavaVariableFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "K:/后端项目/takeAway/order/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.ignored.files",
+    "spring.configuration.checksum": "32af3525bf8e6a79c7621edbb6b8785c",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.task.service" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="K:\后端项目\takeAway\order\src\main\resources" />
       <recent name="K:\后端项目\takeAway\order\src\main\java\org\example" />
       <recent name="K:\后端项目\takeAway\yinghu\src\main\java\org\example" />
       <recent name="K:\后端项目\takeAway\yinghu\src\main\java" />
       <recent name="K:\后端项目\takeAway\yinghu\src\main\java\org\yinghu" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="K:\后端项目\takeAway\order\src\main\resources\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.common" />
@@ -217,8 +199,16 @@
       <workItem from="1687483243226" duration="26050000" />
       <workItem from="1687527418860" duration="31538000" />
       <workItem from="1687730239906" duration="16551000" />
-      <workItem from="1687820930625" duration="3849000" />
+      <workItem from="1687820930625" duration="24718000" />
     </task>
+    <task id="LOCAL-00001" summary="rabbitmq集成">
+      <created>1687826562788</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687826562788</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,5 +224,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="rabbitmq集成" />
+    <option name="LAST_COMMIT_MESSAGE" value="rabbitmq集成" />
   </component>
 </project>

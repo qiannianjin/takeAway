@@ -2,7 +2,10 @@ package org.example.config;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.task.service.TransMessageServices;
 import org.springframework.amqp.core.AcknowledgeMode;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -10,6 +13,8 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
+import org.springframework.amqp.support.converter.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,18 +30,24 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class MoodyRabbitConfig {
 
-        @Value("${moodymq.host}")
-         String host;
+    @Value("${moodymq.host}")
+    String host;
     @Value("${moodymq.port}")
-        int port;
+    int port;
     @Value("${moodymq.username}")
-        String username;
+    String username;
     @Value("${moodymq.password}")
-        String password;
+    String password;
     @Value("${moodymq.vhost}")
-        String vhost;
+    String vhost;
+
+    @Autowired
+    TransMessageServices transMessageServices;
+
+
+
     @Bean
-    public ConnectionFactory connectionFactory(){
+    public ConnectionFactory connectionFactory() {
 
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setHost(host);
@@ -52,15 +63,16 @@ public class MoodyRabbitConfig {
         return connectionFactory;
 
     }
+
     @Bean
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory){
+    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
         RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
         rabbitAdmin.setAutoStartup(true);
         return rabbitAdmin;
     }
 
     @Bean
-    public RabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory){
+    public RabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
 
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
@@ -71,30 +83,40 @@ public class MoodyRabbitConfig {
     }
 
     @Bean
-    public RabbitTemplate rabbitTemplate(CachingConnectionFactory connectionFactory){
+    public RabbitTemplate rabbitTemplate(CachingConnectionFactory connectionFactory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         //托管
         rabbitTemplate.setMandatory(true);
         //发送失败的回调
-        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey)->{
-            log.info("消息无法路由！message:{}, replyCode:{}, replyText:{}, exchange:{}, routingKey:{}" ,
+        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
+            log.info("消息无法路由！message:{}, replyCode:{}, replyText:{}, exchange:{}, routingKey:{}",
                     message,
                     replyCode,
                     replyText,
                     exchange,
                     routingKey);
+            transMessageServices.messageSendReturn(message.getMessageProperties().getMessageId(),
+                    exchange,routingKey,
+                    new String(message.getBody()));
+
         });
-        rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback(){
+        rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback() {
             @Override
-            public void confirm(CorrelationData correlationData, boolean b, String s) {
-                System.out.println("第二种template");
-                log.info("correlationData:{}, ack:{},cause:{}",correlationData,b,s);
+            public void confirm(CorrelationData correlationData, boolean ack, String cause) {
+                log.info("correlationData:{}, ack:{},cause:{}", correlationData, ack, cause);
+                if (ack && null != correlationData) {
+                    String messageId = correlationData.getId();
+                    log.info("消息已经正确投递到交换机，id：{}",messageId);
+                    transMessageServices.messageSendSuccess(messageId);
+
+                }else{
+                    log.error("消息投递到交换机失败,correlationData:{}",correlationData);
+                }
             }
         });
-        //rabbitTemplate.setMessageConverter(converter);
+        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         return rabbitTemplate;
     }
-
 
 
 }

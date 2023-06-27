@@ -3,8 +3,12 @@ package org.example.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.example.common.TransMessageType;
 import org.example.config.RabbitConfig;
+import org.example.task.TransMessageSender;
+import org.example.task.service.TransMessageServices;
 import org.example.test.entity.OrderDetail;
+import org.example.test.entity.TransMessage;
 import org.example.test.service.OrderDetailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,14 +42,19 @@ public class TestController {
     private final Logger logger = LoggerFactory.getLogger(TestController.class);
     @Autowired
     @Qualifier("rabbitTemplate3")
-    private RabbitTemplate rabbitTemplate;
+    private RabbitTemplate rabbitTemplate3;
 
     @Autowired
     @Qualifier("rabbitTemplate2")
     private RabbitTemplate rabbitTemplate2;
 
+    @Autowired
+    private  RabbitTemplate rabbitTemplate;
     @Resource
     private OrderDetailService orderDetailService;
+
+    @Autowired
+    TransMessageSender transMessageSender;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -77,14 +86,19 @@ public void test() throws JsonProcessingException, InterruptedException {
 
 
 
-    rabbitTemplate.send("exchange.order.restaurant","key.order",message,correlationData);
-    rabbitTemplate.send("exchange.order.restaurant","key.restaurant",message,correlationData);
-
-    rabbitTemplate2.convertAndSend("exchange.order.restaurant","key.restaurant",orderDetail,correlationData);
+    //rabbitTemplate.send("exchange.order.restaurant","key.order",message,correlationData);
+    //rabbitTemplate.send("exchange.order.restaurant","key.restaurant",message,correlationData);
+    //
+    //rabbitTemplate2.convertAndSend("exchange.order.restaurant","key.restaurant",orderDetail,correlationData);
 
     //rabbitTemplate.setReturnsCallback(()->{});
     //rabbitTemplate.setConfirmCallback();
     //rabbitTemplate.setMandatory();
+
+    //transMessageServices.messageSendReady("exchange.order.restaurant","key.order","");
+
+    //transMessageSender.send("exchange.order.restaurant","key.order","你好");
+    transMessageSender.send("exchange.order.restauran","key.order","你好");
 
 
 

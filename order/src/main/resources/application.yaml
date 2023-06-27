@@ -107,3 +107,6 @@ moodymq:
   password: admin
   username: admin
   vhost: /
+  resendFreq: 5000
+  service: orderService
+  resendTimes: 5

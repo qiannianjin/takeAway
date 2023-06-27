@@ -76,15 +76,15 @@ public class MyQueueListener {
     //    String body1 = String.valueOf(body);
     //    System.out.println("body1 = " + body1);
     //}
-    @RabbitListener(ackMode = "MANUAL",
-            queues = "queue.order",messageConverter = "converter")
-    public void handleMessage(@Payload Message message, Channel channel ,OrderDetail orderDetail) throws IOException {
-
-        long deliveryTag = message.getMessageProperties().getDeliveryTag();
-        channel.basicAck(deliveryTag, false);// 手动确认消息
-        System.out.println("orderDetail = " + orderDetail);
-        System.out.println("queue.order:消息确认");
-    }
+    //@RabbitListener(ackMode = "MANUAL",
+    //        queues = "queue.order",messageConverter = "converter")
+    //public void handleMessage(@Payload Message message, Channel channel ,OrderDetail orderDetail) throws IOException {
+    //
+    //    long deliveryTag = message.getMessageProperties().getDeliveryTag();
+    //    channel.basicAck(deliveryTag, false);// 手动确认消息
+    //    System.out.println("orderDetail = " + orderDetail);
+    //    System.out.println("queue.order:消息确认");
+    //}
 
     @RabbitListener(queues = "queue.restaurant",ackMode = "AUTO",messageConverter = "converter")
     public  void onMessage2(@Payload Message message, Channel channel ,OrderDetail orderDetail) {
@@ -95,6 +95,16 @@ public class MyQueueListener {
         System.out.println("餐厅2");
     }
 
+
+    @RabbitListener(ackMode = "MANUAL",
+            queues = "queue.order",messageConverter = "converter")
+    public void handleMessage(@Payload Message message, Channel channel ,Object orderDetail) throws IOException {
+
+        long deliveryTag = message.getMessageProperties().getDeliveryTag();
+        channel.basicAck(deliveryTag, false);// 手动确认消息
+        System.out.println("orderDetail = " + orderDetail);
+        System.out.println("queue.order:消息确认");
+    }
 
 
 
