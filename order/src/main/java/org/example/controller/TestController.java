@@ -98,7 +98,7 @@ public void test() throws JsonProcessingException, InterruptedException {
     //transMessageServices.messageSendReady("exchange.order.restaurant","key.order","");
 
     //transMessageSender.send("exchange.order.restaurant","key.order","你好");
-    transMessageSender.send("exchange.order.restauran","key.order","你好");
+    transMessageSender.send("exchange.order.restaurant","key.order","你好");
 
 
 

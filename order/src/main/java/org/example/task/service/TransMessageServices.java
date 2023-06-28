@@ -22,4 +22,21 @@ public interface TransMessageServices {
     //消息重发多次，放弃
     void messageDead(String id);
 
+    //保存监听到的死信信息
+    void messageDead(String id,String exchange,String routingKey,String queue,String body);
+
+    //-----------------------------------------
+    //消息消费
+   TransMessage messageReceiveReady(String id,
+                                    String exchange,
+                                    String routingKey,
+                                    String queue,
+                                    String body);
+
+
+   void messageReciveSuccess(String id);
+
+
+
+
 }

@@ -4,32 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="133ebaa5-d74d-4044-a7e7-9ab98ba22971" name="Changes" comment="rabbitmq集成">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b87057dd07f06d65137cf55227d16b731ce38887" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef09b8caa2d070bebc055d19b50001768293c10c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/3/f3982aa7bbd7cd62edf21aab4fba8d224c55c37e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/8/b87057dd07f06d65137cf55227d16b731ce38887" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/f/ef09b8caa2d070bebc055d19b50001768293c10c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/3/f3982aa7bbd7cd62edf21aab4fba8d224c55c37e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/common/TransMessageType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/po/TransMessagePo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/ResendTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/TransMessageSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/controller/TransMessageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/dao/TransMessageDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/entity/TransMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/service/TransMessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/test/service/impl/TransMessageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/src/main/resources/mapper/TransMessageDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easyCodeMybatisCodeHelperTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeMybatisCodeHelperTableSetting.xml" afterDir="false" />
+    <list default="true" id="133ebaa5-d74d-4044-a7e7-9ab98ba22971" name="Changes" comment="消息重发框架实现编写">
+      <change afterPath="$PROJECT_DIR$/.idea/setting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/DlxConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/MyRedissonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/OrderTestListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/listener/AbstractMessageListerner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/listener/DlxListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/config/MoodyRabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/config/MoodyRabbitConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/controller/MyQueueListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/MyQueueListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/org/example/task/service/TransMessageServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/test/java/OrderApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/test/java/OrderApplicationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +40,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
@@ -90,7 +83,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "K:/后端项目/takeAway/order/src/main/resources",
+    "last_opened_file_path": "K:/后端项目/back_endback_end",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,7 +92,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.ignored.files",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "spring.configuration.checksum": "32af3525bf8e6a79c7621edbb6b8785c",
     "vue.rearranger.settings.migration": "true"
   },
@@ -199,7 +192,9 @@
       <workItem from="1687483243226" duration="26050000" />
       <workItem from="1687527418860" duration="31538000" />
       <workItem from="1687730239906" duration="16551000" />
-      <workItem from="1687820930625" duration="24718000" />
+      <workItem from="1687820930625" duration="40650000" />
+      <workItem from="1687940919052" duration="1077000" />
+      <workItem from="1687943122826" duration="2788000" />
     </task>
     <task id="LOCAL-00001" summary="rabbitmq集成">
       <created>1687826562788</created>
@@ -208,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687826562788</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="消息重发框架实现编写">
+      <created>1687856338635</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687856338635</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +229,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rabbitmq集成" />
-    <option name="LAST_COMMIT_MESSAGE" value="rabbitmq集成" />
+    <MESSAGE value="消息重发框架实现编写" />
+    <option name="LAST_COMMIT_MESSAGE" value="消息重发框架实现编写" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/order/src/main/java/org/example/task/listener/AbstractMessageListerner.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/order/src/main/java/org/example/task/listener/AbstractMessageListerner.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

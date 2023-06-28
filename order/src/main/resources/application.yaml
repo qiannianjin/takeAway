@@ -110,3 +110,4 @@ moodymq:
   resendFreq: 5000
   service: orderService
   resendTimes: 5
+  dlxEnabled: true

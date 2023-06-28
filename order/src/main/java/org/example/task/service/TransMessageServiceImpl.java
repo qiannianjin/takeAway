@@ -86,4 +86,54 @@ public class TransMessageServiceImpl implements TransMessageServices {
         one.setType(TransMessageType.DEAD);
         transMessageService.saveOrUpdate(one);
     }
+
+    @Override
+    public void messageDead(String id, String exchange, String routingKey, String queue, String body) {
+
+        TransMessage transMessage = TransMessage.builder()
+                .id(id)
+                .service(serviceName)
+                .type(TransMessageType.DEAD)
+                .exchange(exchange)
+                .date(new Date())
+                .routingKey(routingKey)
+                .queue(queue)
+                .payload(body)
+                .sequence(0)
+                .build();
+            transMessageService.saveOrUpdate(transMessage);
+    }
+
+    @Override
+    public TransMessage messageReceiveReady(String id, String exchange, String routingKey, String queue, String body) {
+        TransMessage transMessage = TransMessage.builder()
+                .id(id)
+                .service(serviceName)
+                .type(TransMessageType.RECEIVE)
+                .exchange(exchange)
+                .date(new Date())
+                .routingKey(routingKey)
+                .queue(queue)
+                .payload(body)
+                .sequence(0)
+                .build();
+        //查询
+       TransMessage transMessage2 = transMessageService.getOne(new QueryWrapper<>(TransMessage.builder().id(id).service(serviceName).build()));
+        if(transMessage2 == null){
+
+            boolean b = transMessageService.saveOrUpdate(transMessage);
+            return transMessage;
+        }else{
+            transMessage2.setSequence(transMessage2.getSequence()+1);
+            transMessageService.saveOrUpdate(transMessage2);
+            return transMessage2;
+        }
+
+
+    }
+
+    @Override
+    public void messageReciveSuccess(String id) {
+            transMessageService.removeById(id);
+    }
 }

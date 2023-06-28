@@ -86,7 +86,7 @@ public class MyQueueListener {
     //    System.out.println("queue.order:消息确认");
     //}
 
-    @RabbitListener(queues = "queue.restaurant",ackMode = "AUTO",messageConverter = "converter")
+  //  @RabbitListener(queues = "queue.restaurant",ackMode = "AUTO",messageConverter = "converter")
     public  void onMessage2(@Payload Message message, Channel channel ,OrderDetail orderDetail) {
         long deliveryTag = message.getMessageProperties().getDeliveryTag();
         //channel.basicAck(deliveryTag, false);// 手动确认消息
@@ -96,8 +96,7 @@ public class MyQueueListener {
     }
 
 
-    @RabbitListener(ackMode = "MANUAL",
-            queues = "queue.order",messageConverter = "converter")
+   // @RabbitListener(ackMode = "MANUAL", queues = "queue.order",messageConverter = "converter")
     public void handleMessage(@Payload Message message, Channel channel ,Object orderDetail) throws IOException {
 
         long deliveryTag = message.getMessageProperties().getDeliveryTag();
@@ -105,6 +104,12 @@ public class MyQueueListener {
         System.out.println("orderDetail = " + orderDetail);
         System.out.println("queue.order:消息确认");
     }
+
+    //@RabbitListener()
+    //public static void test(String[] args) {
+    //
+    //}
+
 
 
 

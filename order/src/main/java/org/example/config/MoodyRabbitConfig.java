@@ -2,6 +2,7 @@ package org.example.config;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.controller.OrderTestListener;
 import org.example.task.service.TransMessageServices;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
@@ -13,6 +14,8 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.support.MessagePropertiesConverter;
 import org.springframework.amqp.support.converter.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,6 +46,18 @@ public class MoodyRabbitConfig {
 
     @Autowired
     TransMessageServices transMessageServices;
+    @Bean
+    public SimpleMessageListenerContainer simpleMessageListenerContainer2(ConnectionFactory connectionFactory, OrderTestListener orderTestListener){
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
+        container.setMessageListener(orderTestListener);
+        container.setQueueNames("queue.order");
+        container.setPrefetchCount(1);
+        container.setConcurrentConsumers(3);
+        container.setMaxConcurrentConsumers(10);
+        container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+        //container.setMessagePropertiesConverter((MessagePropertiesConverter) new Jackson2JsonMessageConverter());
+        return container;
+    }
 
 
 
